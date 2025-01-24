@@ -155,7 +155,7 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
     if (this.interviewForm.valid) {
-      this.http.post('http://localhost:8080/api/interviews', this.interviewForm.value).subscribe({
+      this.http.post('http://localhost:8081/api/interviews', this.interviewForm.value).subscribe({
         next: (response) => {
           this.openDialog('Success', 'Interview scheduled successfully!');
 
