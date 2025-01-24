@@ -1,0 +1,188 @@
+<div class="container">
+  <h1>INTERVIEW SCHEDULER</h1>
+  <form [formGroup]="interviewForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+
+      <!-- Employee ID -->
+      <!-- Employee Name -->
+      <div class="form-group">
+        <label for="empName">Employee Name*</label>
+        <input id="empName" formControlName="empName" type="text" placeholder="Enter employee name" />
+        <div *ngIf="interviewForm.get('empName')?.touched && interviewForm.get('empName')?.invalid" class="error">
+          <small *ngIf="interviewForm.get('empName')?.errors?.['required']">Name is required.</small>
+          <small *ngIf="interviewForm.get('empName')?.errors?.['invalidName']">Name must contain only alphabets, spaces, hyphens, or apostrophes.</small>
+        </div>
+      </div>
+
+      <!-- Recruiter Email -->
+      <div class="form-group">
+        <label for="recMail">Recruiter Mail ID*</label>
+        <input
+          id="recMail"
+          formControlName="recMail"
+          type="email"
+          placeholder="Enter Recruiter Mail"
+        />
+        <div *ngIf="interviewForm.get('recMail')?.touched && interviewForm.get('recMail')?.invalid" class="error">
+          <small *ngIf="interviewForm.get('recMail')?.errors?.['required']">Recruiter email is required.</small>
+          <small *ngIf="interviewForm.get('recMail')?.errors?.['email']">Please enter a valid email address.</small>
+        </div>
+      </div>
+
+      <!-- Candidate Name -->
+      <div class="form-group">
+        <label for="candidateName">Candidate Name*</label>
+        <input id="candidateName" formControlName="candidateName" type="text" placeholder="Enter candidate name" />
+        <div *ngIf="interviewForm.get('candidateName')?.touched && interviewForm.get('candidateName')?.invalid" class="error">
+          <small *ngIf="interviewForm.get('candidateName')?.errors?.['required']">Name is required.</small>
+          <small *ngIf="interviewForm.get('candidateName')?.errors?.['invalidName']">Name must contain only alphabets, spaces, hyphens, or apostrophes.</small>
+        </div>
+      </div>
+
+      <!-- Candidate Email -->
+      <div class="form-group">
+        <label for="candidateEmail">Candidate Email*</label>
+        <input
+          id="candidateEmail"
+          formControlName="candidateEmail"
+          type="email"
+          placeholder="Enter Candidate Email"
+        />
+        <div *ngIf="interviewForm.get('candidateEmail')?.touched && interviewForm.get('candidateEmail')?.invalid" class="error">
+          <small *ngIf="interviewForm.get('candidateEmail')?.errors?.['required']">Candidate email is required.</small>
+          <small *ngIf="interviewForm.get('candidateEmail')?.errors?.['email']">Please enter a valid email address.</small>
+        </div>
+      </div>
+
+
+
+
+
+      <!-- Role -->
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" formControlName="role">
+          <option value="" disabled selected>Select Role</option>
+          <option *ngFor="let rol of role" [value]="rol">{{ rol }}</option>
+        </select>
+      </div>
+
+      <!-- Date -->
+      <div class="form-group">
+        <label for="scheduledDate">Date and Time*</label>
+        <input
+          id="scheduledDate"
+          type="datetime-local"
+          formControlName="scheduledDate"
+          required
+          [min]="minDateTime" />
+        <div *ngIf="interviewForm.get('scheduledDate')?.touched && interviewForm.get('scheduledDate')?.errors">
+          <small *ngIf="interviewForm.get('scheduledDate')?.errors?.['invalidDate']">
+            The selected date and time must be today or in the future.
+          </small>
+          <small *ngIf="interviewForm.get('scheduledDate')?.errors?.['required']">
+            Scheduled date and time is required.
+          </small>
+        </div>
+      </div>
+
+      <!-- Round -->
+      <div class="form-group">
+        <label for="roundNumber">Round*</label>
+        <select id="roundNumber" formControlName="roundNumber">
+          <option value="" disabled selected>Select Round</option>
+          <option *ngFor="let round of roundNumber" [value]="round">Round {{ round }}</option>
+        </select>
+      </div>
+
+      <!-- Interview Panel -->
+      <div class="form-group">
+        <label for="interviewPanel">Interview Panel*</label>
+        <select id="interviewPanel" formControlName="interviewPanel">
+          <option value="" disabled selected>Select Interview Panel</option>
+          <option *ngFor="let panel of interviewPanels" [value]="panel">{{ panel }}</option>
+        </select>
+      </div>
+
+      <!-- Interview Type -->
+      <div class="form-group type-container" [ngClass]="{'row-layout': interviewForm.get('interviewType')?.value}">
+        <!-- Type Selection Dropdown -->
+        <div class="type-select-container">
+          <label for="interviewType">Interview Type*</label>
+          <select
+            id="interviewType"
+            formControlName="interviewType"
+            class="type-select"
+          >
+            <option value="" disabled selected>Select Interview Type</option>
+            <option *ngFor="let type of interviewTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        <!-- Dynamic Input Fields -->
+        <div class="conditional-fields">
+          <!-- Candidate Phone for Telephonic -->
+          <div *ngIf="interviewForm.get('interviewType')?.value === 'Telephonic'">
+            <label for="phone">Candidate Phone*</label>
+            <input
+              id="phone"
+              formControlName="phone"
+              type="text"
+              placeholder="Enter candidate phone"
+            />
+            <div *ngIf="interviewForm.get('phone')?.touched && interviewForm.get('phone')?.invalid" class="error">
+              <small *ngIf="interviewForm.get('phone')?.errors?.['invalidPhoneNumber']">Invalid phone number. Enter 10 digits only.</small>
+            </div>
+          </div>
+
+          <!-- Google Meet Link for Google Meet -->
+          <div *ngIf="interviewForm.get('interviewType')?.value === 'Google-meet'">
+            <label for="link">Google Meet Link*</label>
+            <input
+              id="link"
+              formControlName="link"
+              type="url"
+              placeholder="Enter Google Meet link"
+            />
+            <div *ngIf="interviewForm.get('link')?.touched && interviewForm.get('link')?.invalid" class="error">
+              <small *ngIf="interviewForm.get('link')?.errors?.['invalidLink']">Please enter a valid Google Meet link.</small>
+            </div>
+          </div>
+
+          <!-- Location for In-Office -->
+          <div *ngIf="interviewForm.get('interviewType')?.value === 'In-Office'">
+            <label for="location">Location*</label>
+            <input
+              id="location"
+              formControlName="location"
+              type="text"
+              placeholder="Enter location, Max 100 chars"
+              maxlength="100"
+            />
+            <div *ngIf="locationControl?.touched && locationControl?.hasError('maxlength')" class="error">
+              <small>Location cannot exceed 100 characters.</small>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Instructions for Candidate -->
+      <div class="example-form ">
+        <mat-form-field class="example-full-width">
+          <mat-label class="custom-label" for="candidateInstructions" >Instructions for Candidate</mat-label>
+          <textarea matInput #Instructions id="candidateInstructions" formControlName="candidateInstructions"></textarea>
+          <mat-hint align="end">{{Instructions.value.length}} / 50</mat-hint>
+          <div *ngIf="interviewForm.get('candidateInstructions')?.touched && interviewForm.get('candidateInstructions')?.invalid" class="error">
+            <small>Max Limit Reached.</small>
+          </div>
+        </mat-form-field>
+
+      </div>
+
+      <button type="submit" [disabled]="interviewForm.invalid">SUBMIT</button>
+    </div>
+  </form>
+</div>
