@@ -15,6 +15,7 @@
           "options": {
             "outputPath": "dist/int-sch",
             "index": "src/index.html",
+            "baseHref": "/my-frontend/",
 
             "browser": "src/main.ts",
             "polyfills": [
