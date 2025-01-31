@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4f34205-401f-4ea0-a265-d8044ed90c8d" name="Changes" comment="URL W/O backend">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,8 +88,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.153" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.153" />
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
       </set>
     </attachedChunks>
   </component>
@@ -125,6 +127,15 @@
       <workItem from="1737957814820" duration="2419000" />
       <workItem from="1738041725086" duration="6000" />
       <workItem from="1738043729161" duration="4440000" />
+      <workItem from="1738063094934" duration="1102000" />
+      <workItem from="1738147781637" duration="64000" />
+      <workItem from="1738210952600" duration="2718000" />
+      <workItem from="1738231600577" duration="6000000" />
+      <workItem from="1738249543651" duration="3611000" />
+      <workItem from="1738254304513" duration="15000" />
+      <workItem from="1738306301945" duration="2000" />
+      <workItem from="1738306794458" duration="21000" />
+      <workItem from="1738306834500" duration="1645000" />
     </task>
     <task id="LOCAL-00001" summary="try">
       <option name="closed" value="true" />
@@ -174,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738043948746</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="URL W/O backend">
+      <option name="closed" value="true" />
+      <created>1738063138755</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738063138755</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
